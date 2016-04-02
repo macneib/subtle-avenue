@@ -1,0 +1,25 @@
+before_script:
+  # Setup env
+  - export NPM_CONFIG_CACHE=/cache/npm
+  - export BOWER_STORAGE__PACKAGES=/cache/bower
+  # Setup cache folders
+  - mkdir -p /cache/solidsaturnApp/node_modules /cache/solidsaturnApp/bower_components client
+  - ln -s /cache/solidsaturnApp/node_modules node_modules
+  - ln -s /cache/solidsaturnApp/bower_components client/bower_components
+  # PopRethinkdb
+  - python /cache/scripts/test.py
+  # Use node v4.2.0(latest)
+  # - nvm install v4.2.0
+  # Install project deps
+  - npm install
+  - bower install --allow-root
+
+fullstack-runner:
+  services:
+    - rethinkdb
+    - redis
+  script:
+    - grunt test:server
+    #- grunt test:e2e
+  tags:
+    - nodejs

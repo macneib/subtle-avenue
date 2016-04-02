@@ -1,0 +1,16 @@
+npm-debug.log
+server/config/local.env.js
+public
+server/log
+node_modules
+coverage
+client/assets/video
+solid-saturn.error
+client/tmp
+client/bower_components
+.idea
+.tmp
+/rethinkdb_data
+dist
+client/assets/video/
+coverage
